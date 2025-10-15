@@ -5,12 +5,12 @@ using namespace std;
 
 MyVector operator+ (int a, MyVector& obj2)
 {
-	MyVector rez = obj2;
-	for (int i = 0; i < rez.GetSize(); i++)
+	MyVector result = obj2;
+	for (int i = 0; i < result.GetSize(); i++)
 	{
-		rez[i] += a;
+		result[i] += a;
 	}
-	return rez;
+	return result;
 }
 
 MyVector operator--(MyVector& obj2)
@@ -24,6 +24,38 @@ MyVector operator--(MyVector& obj2)
 	return obj2;
 }
 
+ostream& operator<<(ostream& os, MyVector& obj)
+{
+	os << "Your arr:" << endl;
+	for (int i = 0; i < obj.GetSize(); i++)
+	{
+		os << obj[i] << "\t";
+	}
+	os << endl;
+	os << "Your size:" << endl;
+	os << obj.GetSize() << endl;
+	return os;
+}
+
+istream& operator>>(istream& is, MyVector& obj)
+{
+	if (obj.GetSize() == 0)
+	{
+		int s;
+		cout << "Enter size of arr: " << endl;
+		is >> s;
+		obj.NewArr(s);
+	}
+	int a;
+	for (int i = 0; i < obj.GetSize(); i++)
+	{
+		cout << "Enter: " << i + 1 << " element: " << endl;
+		is >> a;
+		obj.Add(i, a);
+	}
+	return is;
+}
+
 int main()
 {
 	srand(unsigned(time(0)));
@@ -32,7 +64,15 @@ int main()
 	v.Init();
 	v.Print();
 
-	MyVector v2 = 5 + v;
+	MyVector v2;
+	cin >> v2;
+	cout << v2 << endl;
+
+	MyVector v3(10);
+	cin >> v3;
+	cout << v3 << endl;
+
+	/*MyVector v2 = 5 + v;
 	v2.Print();
 	--v2;
 	v2.Print();
@@ -81,5 +121,5 @@ int main()
 	MyVector vec3;
 	vec3 = move(v);
 	vec3();
-	cout << v.GetSize() << endl;
+	cout << v.GetSize() << endl;*/
 }
