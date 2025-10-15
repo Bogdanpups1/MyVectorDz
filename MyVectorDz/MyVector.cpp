@@ -221,3 +221,14 @@ void MyVector::SetSize(int s)
 {
 	size = s;
 }
+
+void MyVector::Add(int i, int a)
+{
+	arr[i] = a;
+}
+
+void MyVector::NewArr(int s)
+{
+	size = s;
+	arr = new int[size];
+}
