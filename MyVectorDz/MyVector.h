@@ -26,5 +26,6 @@ public:
 	MyVector& operator =(MyVector&& b);
 
 	void SetSize(int s);
+	void Add(int i, int a);
+	void NewArr(int s);
 };
-
